@@ -1,0 +1,5 @@
+name: dartodon
+description: Mastodon API Client in dartlang
+version: 0.1.0
+homepage: https://github.com/darkcl/dartodon
+author: Yeung Yiu Hung <hkclex@gmail.com>
