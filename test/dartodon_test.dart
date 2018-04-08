@@ -1,16 +1,27 @@
 import 'package:dartodon/dartodon.dart';
 import 'package:test/test.dart';
+import 'package:http/testing.dart';
+import 'package:http/http.dart';
+
+import 'dart:convert';
 
 void main() {
-  group('A group of tests', () {
-    Awesome awesome;
+  group('Application Group', () {
+    DartodonClient dartodonClient;
 
-    setUp(() {
-      awesome = new Awesome();
+    MockClient client = new MockClient((request) async {
+      return new Response("", 404);
     });
 
-    test('First Test', () {
-      expect(awesome.isAwesome, isTrue);
+    setUp(() {
+      dartodonClient = new DartodonClient();
+    });
+
+    test('First Test', () async {
+      DartodonClient registeredClient = await Dartodon.register(dartodonClient, client);
+
+      expect(registeredClient.clientId, isNotEmpty);
+      expect(registeredClient.isRegistered, isTrue);
     });
   });
 }
