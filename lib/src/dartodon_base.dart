@@ -6,9 +6,8 @@ import 'package:http/http.dart';
 
 class Dartodon {
   static Future<DartodonClient> register(DartodonClient client, BaseClient httpClient) async{
-    Uri uri = new Uri.https(client.baseUrl, '/api/v1/apps');
     Response response = 
-      await httpClient.post(uri, headers: {"Content-Type": ContentType.JSON.toString()}, body: JSON.encode(client.toMap()), encoding: UTF8);
+      await httpClient.post(client.registerEndpoint, headers: {"Content-Type": ContentType.JSON.toString()}, body: JSON.encode(client.toMap()), encoding: UTF8);
     Map jsonMap = JSON.decode(response.body);
     client.id = jsonMap['id'];
     client.clientId = jsonMap['client_id'];

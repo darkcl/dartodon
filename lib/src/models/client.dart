@@ -1,4 +1,3 @@
-import '../service/apps_service.dart';
 
 class DartodonClient {
   bool get isRegistered => (id.isNotEmpty && clientId.isNotEmpty && clientSecret.isNotEmpty);
@@ -13,6 +12,8 @@ class DartodonClient {
   String id = "";
   String clientId = "";
   String clientSecret = "";
+
+  Uri get registerEndpoint => this.isHttps ? new Uri.https(this.baseUrl, '/api/v1/apps') : new Uri.http(this.baseUrl, '/api/v1/apps');
 
   Map toMap() {
     return {
