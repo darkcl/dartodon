@@ -1,7 +1,7 @@
 import '../service/apps_service.dart';
 
 class DartodonClient {
-  bool isRegistered = false;
+  bool get isRegistered => (id.isNotEmpty && clientId.isNotEmpty && clientSecret.isNotEmpty);
   bool isHttps = true;
   String baseUrl = "mastodon.social";
 
