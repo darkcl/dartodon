@@ -25,10 +25,12 @@ void main() {
       dartodonClient = new DartodonClient();
     });
 
-    test('First Test', () async {
+    test('Register Client Tests', () async {
       DartodonClient registeredClient = await Dartodon.register(dartodonClient, client);
 
-      expect(registeredClient.clientId, isNotEmpty);
+      expect(registeredClient.clientId, "a606f90e615de04fc9e50cc83aa924a703ea675d206d5a9c1ca51f8aef45df4a");
+      expect(registeredClient.clientSecret, "8b922babbd4e2f568d49326f6a720def3384d6707ddc7216489874ca8dd557b6");
+      expect(registeredClient.id, "191815");
       expect(registeredClient.isRegistered, isTrue);
     });
   });
