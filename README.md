@@ -1,22 +1,25 @@
 # dartodon
 
-A library for Dart developers.
+A dart library for mastodon api.
 
 Created from templates made available by Stagehand under a BSD-style
 [license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
 
 ## Usage
 
-A simple usage example:
+Register Application
 
-    import 'package:dartodon/dartodon.dart';
+```dart
+import 'package:dartodon/dartodon.dart';
+import 'package:http/http.dart';
 
-    main() {
-      var awesome = new Awesome();
-    }
+main() async{
+  DartodonClient client = new DartodonClient();
+  client.isHttps = true;
+  client.baseUrl = "mastodon.social";
+  client.redirectUris = "myapp://success";
+  client.clientName = "Awesome Client";
 
-## Features and bugs
-
-Please file feature requests and bugs at the [issue tracker][tracker].
-
-[tracker]: http://example.com/issues/replaceme
+  client = await Dartodon.register(client, new IOClient());
+}
+```
