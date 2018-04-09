@@ -1,4 +1,7 @@
 
+/// Dartodon Client
+/// 
+/// Manage mastodon api oauth2 client id, secret and application specific information.
 class DartodonClient {
   bool get isRegistered => (id.isNotEmpty && clientId.isNotEmpty && clientSecret.isNotEmpty);
   bool isHttps = true;
